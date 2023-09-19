@@ -1,3 +1,4 @@
+#include <Eigen/Dense>
 //Input:
 //  q - generalized coordiantes for the mass-spring system
 //  qdot - generalized velocity for the mass spring system
@@ -10,5 +11,9 @@
 
 template<typename FORCE> 
 inline void symplectic_euler(Eigen::VectorXd &q, Eigen::VectorXd &qdot, double dt, double mass,  FORCE &force) {
+	Eigen::VectorXd f;
+	force(f, q, qdot);
 
+	qdot += dt * f / mass;
+	q += dt * qdot;
 }

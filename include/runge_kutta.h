@@ -1,3 +1,4 @@
+#include <Eigen/Dense>
 //Input:
 //  q - generalized coordiantes for the mass-spring system
 //  qdot - generalized velocity for the mass spring system
